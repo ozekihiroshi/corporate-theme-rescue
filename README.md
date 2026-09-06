@@ -2,6 +2,9 @@
 
 Isolated Docker environments for Ozeki Corporate.
 
+See [showcase fixtures](docs/showcase.md) and [release audit](docs/release-audit.md)
+for safe fixture updates, ZIP testing and recorded verification results.
+
 - Development environment: <http://localhost:8089>, with the theme source mounted read-only.
 - Release ZIP environment: <http://localhost:8090>, with no source bind mount.
 

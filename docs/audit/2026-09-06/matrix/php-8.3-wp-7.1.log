@@ -1,0 +1,19 @@
+ Container ozeki-corporate-audit-db-1  Running
+Unpacking the package...
+Installing the theme...
+Theme installed successfully.
+Activating 'ozeki-corporate'...
+Success: Switched to 'Ozeki Corporate' theme.
+Success: Installed 1 of 1 themes.
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/services.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/call-to-action.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/hero.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/strengths.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/introduction.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/company-information.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/latest-news.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/return-home.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/functions.php
+RUNTIME_OK PHP=8.3.33 WP=7.1 templates=7 patterns=8
+20260901
+[{"type":"INFO","value":"Only one text-domain is being used in this theme. Make sure it matches the theme's slug correctly so that the theme will be compatible with WordPress.org language packs. The domain found is ozeki-corporate."}]

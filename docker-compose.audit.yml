@@ -1,0 +1,27 @@
+name: ozeki-corporate-audit
+services:
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: audit
+      MARIADB_USER: audit
+      MARIADB_PASSWORD: local-audit-only
+      MARIADB_ROOT_PASSWORD: local-audit-root-only
+    tmpfs:
+      - /var/lib/mysql
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+  runner:
+    image: wordpress:cli-php${AUDIT_PHP:-8.3}
+    environment:
+      AUDIT_WP: ${AUDIT_WP:-6.6}
+    volumes:
+      - ./scripts:/audit:ro
+      - ../ozeki-corporate/build:/release:ro
+    entrypoint: [sh, /audit/run-theme-audit.sh]
+    depends_on:
+      db:
+        condition: service_healthy
