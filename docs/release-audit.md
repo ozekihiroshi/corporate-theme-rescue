@@ -1,5 +1,21 @@
 # Release audit — 2026-09-06
 
+## Current checkpoint
+
+The sections below retain the initial audit history. Current follow-ups:
+
+- [Full Edge/Firefox retry](audit/2026-09-06-stage2-retry/README.md): passed.
+- [Theme Unit Test findings](audit/2026-09-06-stage3/README.md) and
+  [fix/retest](audit/2026-09-06-stage3-fixed/README.md): 88 cases passed after fixes.
+- [Existing AWS showcase and user device checks](aws-showcase.md).
+- Current fixed ZIP SHA256:
+  `985fe70bb5b96b0fbe811d26b9b4c51d189ef400be5d14bae84dc88be43430c6`.
+- iPhone Safari display/menu/navigation and basic VoiceOver reading/navigation
+  were reported by the user. This is not full accessibility or usability approval.
+- Mac Safari and the full interactive/manual checklist remain outstanding.
+
+Follow-up: [second-stage browser, contrast and editor checks](audit/2026-09-06-stage2/README.md).
+
 This is an initial release-readiness audit, not a claim of WordPress.org approval
 or complete WCAG conformance. No public release or submission was performed.
 

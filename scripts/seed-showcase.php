@@ -1,16 +1,27 @@
 <?php
 /** Local 8089 showcase. Updates only explicitly marked demo content. */
 if (!defined('ABSPATH') || !defined('WP_CLI') || !WP_CLI) { exit(1); }
-if (untrailingslashit(home_url()) !== 'http://localhost:8089' || get_stylesheet() !== 'ozeki-corporate') {
+if (untrailingslashit(home_url()) !== (getenv('OC_SHOWCASE_TARGET') ?: 'http://localhost:8089') || get_stylesheet() !== 'ozeki-corporate') {
     WP_CLI::error('This fixture is restricted to Ozeki Corporate on localhost:8089.');
 }
 require_once ABSPATH . 'wp-admin/includes/image.php';
 
 $targets = ['page' => ['home','about','services','company','contact','news','english','design-guide'], 'post' => ['japanese-long-heading','mixed-language-monitoring','reliable-monitoring-systems'], 'wp_navigation' => ['northstar-showcase'], 'wp_template' => ['front-page','home'], 'wp_template_part' => ['header','footer']];
 $existing = [];
+$find = static function ($type, $slug) {
+    if (in_array($type, ['wp_template','wp_template_part'], true)) {
+        $matches = get_posts(['post_type'=>$type, 'name'=>$slug, 'post_status'=>'any', 'posts_per_page'=>1,
+            'tax_query'=>[['taxonomy'=>'wp_theme','field'=>'slug','terms'=>'ozeki-corporate']]]);
+        foreach ($matches as $match) {
+            if (has_term('ozeki-corporate', 'wp_theme', $match->ID)) { return $match; }
+        }
+        return null;
+    }
+    return get_page_by_path($slug, OBJECT, $type);
+};
 foreach ($targets as $type => $slugs) {
     foreach ($slugs as $slug) {
-        $post = get_page_by_path($slug, OBJECT, $type);
+        $post = $find($type, $slug);
         if ($post && get_post_meta($post->ID, '_ozeki_corporate_fixture', true) !== '1') {
             WP_CLI::error("Refusing to overwrite unmarked content: {$type}/{$slug}");
         }
@@ -19,8 +30,8 @@ foreach ($targets as $type => $slugs) {
 }
 // Preserve the previous fixture state once, independently of post revisions.
 add_option('ozeki_corporate_before_showcase', ['posts' => $existing, 'front' => get_option('page_on_front'), 'news' => get_option('page_for_posts')], '', false);
-$put = static function ($type, $slug, $title, $content) {
-    $old = get_page_by_path($slug, OBJECT, $type);
+$put = static function ($type, $slug, $title, $content) use ($find) {
+    $old = $find($type, $slug);
     $data = ['post_type'=>$type,'post_name'=>$slug,'post_title'=>$title,'post_content'=>$content,'post_status'=>'publish','post_author'=>1,'comment_status'=>'closed'];
     if ($old) { $data['ID'] = $old->ID; }
     $id = wp_insert_post(wp_slash($data), true);

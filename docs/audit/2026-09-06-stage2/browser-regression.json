@@ -1,0 +1,113 @@
+[
+  {
+    "browser": "firefox",
+    "url": "http://localhost:8090/",
+    "status": 200,
+    "width": 1440,
+    "scroll": 1440,
+    "brokenImages": [],
+    "headings": [
+      "Practical solutions for lasting progress"
+    ]
+  },
+  {
+    "browser": "firefox",
+    "url": "http://localhost:8090/?page_id=5",
+    "status": 200,
+    "width": 1440,
+    "scroll": 1440,
+    "brokenImages": [],
+    "headings": [
+      "編集・復元テスト / Editor regression"
+    ]
+  },
+  {
+    "browser": "firefox",
+    "desktopSubmenuExpanded": "true"
+  },
+  {
+    "browser": "firefox",
+    "url": "http://localhost:8090/",
+    "status": 200,
+    "width": 390,
+    "scroll": 390,
+    "brokenImages": [],
+    "headings": [
+      "Practical solutions for lasting progress"
+    ]
+  },
+  {
+    "browser": "firefox",
+    "url": "http://localhost:8090/?page_id=5",
+    "status": 200,
+    "width": 390,
+    "scroll": 390,
+    "brokenImages": [],
+    "headings": [
+      "編集・復元テスト / Editor regression"
+    ]
+  },
+  {
+    "browser": "firefox",
+    "width": 390,
+    "opened": true,
+    "closed": true,
+    "focusReturned": true
+  },
+  {
+    "browser": "firefox",
+    "url": "http://localhost:8090/",
+    "status": 200,
+    "width": 320,
+    "scroll": 320,
+    "brokenImages": [],
+    "headings": [
+      "Practical solutions for lasting progress"
+    ]
+  },
+  {
+    "browser": "firefox",
+    "url": "http://localhost:8090/?page_id=5",
+    "status": 200,
+    "width": 320,
+    "scroll": 320,
+    "brokenImages": [],
+    "headings": [
+      "編集・復元テスト / Editor regression"
+    ]
+  },
+  {
+    "browser": "firefox",
+    "width": 320,
+    "opened": true,
+    "closed": true,
+    "focusReturned": true
+  },
+  {
+    "browser": "firefox",
+    "hero": {
+      "background": "rgba(0, 0, 0, 0)",
+      "overlayColor": "rgb(23, 33, 43)",
+      "overlayOpacity": "0.7",
+      "text": [
+        {
+          "text": "Clear thinking. Reliable delivery.",
+          "color": "rgb(255, 255, 255)",
+          "size": "13px"
+        },
+        {
+          "text": "Practical solutions for lasting progress",
+          "color": "rgb(255, 255, 255)",
+          "size": "45.5833px"
+        },
+        {
+          "text": "Explain what your organization does and why it matters.",
+          "color": "rgb(255, 255, 255)",
+          "size": "35.9895px"
+        }
+      ],
+      "body": "rgb(255, 255, 255)"
+    },
+    "errors": []
+  }
+]

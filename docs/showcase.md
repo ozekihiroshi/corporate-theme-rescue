@@ -7,7 +7,11 @@ docker compose run --rm wp-cli wp theme activate ozeki-corporate
 docker compose run --rm wp-cli wp eval-file /workspace/scripts/seed-showcase.php
 ```
 
-The script requires `http://localhost:8089` and the active `ozeki-corporate` theme.
+The script defaults to requiring `http://localhost:8089` and the active
+`ozeki-corporate` theme. Remote use requires an explicit `OC_SHOWCASE_TARGET`
+matching the site's home URL; see [AWS deployment record](aws-showcase.md).
+Do not rerun the site-specific AWS deployment script casually: it replaces demo
+content and global styles. Obtain a fresh backup and review its approved page ID.
 It refuses to overwrite any target without `_ozeki_corporate_fixture=1`.
 The first pre-update fixture state is retained in the non-autoloaded option
 `ozeki_corporate_before_showcase`; normal content revisions also remain.

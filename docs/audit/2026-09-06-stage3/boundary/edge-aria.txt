@@ -1,0 +1,76 @@
+- link "Skip to content":
+  - /url: "#wp--skip-link--target"
+- banner:
+  - banner:
+    - paragraph:
+      - link "Ozeki Corporate ZIP audit":
+        - /url: http://localhost:8090
+    - navigation:
+      - button "Open menu"
+- main:
+  - paragraph: Clear thinking. Reliable delivery.
+  - heading "Practical solutions for lasting progress" [level=1]
+  - paragraph: Explain what your organization does and why it matters.
+  - heading "Built around your real priorities" [level=2]
+  - paragraph: Introduce your organization, its purpose, and the value it provides in specific and credible language.
+  - heading "Services" [level=2]
+  - heading "Advisory" [level=3]
+  - paragraph: Describe this service and the outcome it provides.
+  - heading "Implementation" [level=3]
+  - paragraph: Describe this service and the outcome it provides.
+  - heading "Ongoing support" [level=3]
+  - paragraph: Describe this service and the outcome it provides.
+  - heading "Why organizations work with us" [level=2]
+  - heading "01 — Clarity" [level=3]
+  - paragraph: Complex subjects become decisions people can understand and act on.
+  - heading "02 — Reliability" [level=3]
+  - paragraph: Solutions are designed for stable operation and responsible maintenance.
+  - heading "03 — Partnership" [level=3]
+  - paragraph: Work stays grounded in your context, capabilities, and long-term goals.
+  - heading "Latest news" [level=2]
+  - list:
+    - listitem:
+      - time: January 7, 2012
+      - 'heading "Template: Sticky" [level=3]':
+        - 'link "Template: Sticky"':
+          - /url: http://localhost:8090/?p=1241
+      - paragraph: "This is a sticky post. There are a few things to verify: The sticky post should be distinctly recognizable in some way in comparison…"
+    - listitem:
+      - time: September 6, 2026
+      - heading "Hello world!" [level=3]:
+        - link "Hello world!":
+          - /url: http://localhost:8090/?p=1
+      - paragraph: Welcome to WordPress. This is your first post. Edit or delete it, then start writing!
+    - listitem:
+      - time: January 16, 2023
+      - heading "WP 6.1 Font size scale" [level=3]:
+        - link "WP 6.1 Font size scale":
+          - /url: http://localhost:8090/?p=163
+      - paragraph: This test post was generated using the block theme Emptytheme in WordPress 6.1.1. Small H2 Heading Medium H2 Heading Large H2 Heading Extra Large…
+    - listitem:
+      - time: January 16, 2023
+      - heading "WP 6.1 spacing presets" [level=3]:
+        - link "WP 6.1 spacing presets":
+          - /url: http://localhost:8090/?p=150
+      - paragraph: This test post was generated using the block theme Emptytheme in WordPress 6.1.1. On this page, some group blocks have border or background color…
+  - heading "Company information" [level=2]
+  - figure:
+    - table:
+      - rowgroup:
+        - row "Company Your organization name":
+          - rowheader "Company"
+          - cell "Your organization name"
+        - row "Location City, Country":
+          - rowheader "Location"
+          - cell "City, Country"
+        - row "Business Your principal activities":
+          - rowheader "Business"
+          - cell "Your principal activities"
+  - heading "Start a conversation" [level=2]
+  - paragraph: Explain the next step and make it easy for visitors to contact your organization.
+- contentinfo:
+  - contentinfo:
+    - paragraph:
+      - link "Ozeki Corporate ZIP audit":
+        - /url: http://localhost:8090
+    - paragraph: Built with WordPress.
