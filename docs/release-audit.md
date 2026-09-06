@@ -2,6 +2,11 @@
 
 ## Current checkpoint
 
+Final classic-pagination fix and interactive tests:
+[interaction audit](audit/2026-09-06-interactions/README.md).
+Final ZIP SHA256: `70a3e132178a57b6a9c642a8134543202603cf2008c160ebb06b035eea7dc4a7`.
+The earlier fixed ZIP listed below remains the preceding audit checkpoint.
+
 The sections below retain the initial audit history. Current follow-ups:
 
 - [Full Edge/Firefox retry](audit/2026-09-06-stage2-retry/README.md): passed.

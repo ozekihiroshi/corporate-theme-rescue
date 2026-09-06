@@ -1,0 +1,13 @@
+{
+  "pagination": true,
+  "passwordWrongRejected": true,
+  "passwordCorrectAccepted": true,
+  "passwordFreshSessionProtected": true,
+  "comment": {
+    "marker": "OC interaction audit 1788704351849",
+    "parent": "8",
+    "cancelReply": true,
+    "redirect": "http://localhost:8090/?p=1148&unapproved=35#comment-35",
+    "visible": true
+  }
+}

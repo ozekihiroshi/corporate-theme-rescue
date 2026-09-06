@@ -1,0 +1,51 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE);
+const fs=require('fs');const path=require('path');
+(async()=>{
+ const browser=await chromium.launch({executablePath:process.env.BROWSER_EXE});
+ const result={};
+ try {
+  const page=await browser.newPage();
+  await page.goto('http://localhost:8090/?p=1171');
+  const second=page.locator('main a').filter({hasText:/^2$/});
+  if(await second.count()!==1)throw Error('Missing or duplicated page 2 link');
+  await second.click(); await page.waitForLoadState('load');
+  if(!(await page.locator('main').innerText()).includes('Post Page 2'))throw Error('Page 2 not rendered');
+  await page.locator('main a').filter({hasText:/^1$/}).click();
+  if(!(await page.locator('main').innerText()).includes('Post Page 1'))throw Error('Page 1 not restored');
+  result.pagination=true;
+  await page.goto('http://localhost:8090/?p=1168');
+  await page.locator('[name=post_password]').fill('incorrect-test-password');
+  await page.locator('.post-password-form [type=submit]').click();
+  await page.waitForLoadState('load');
+  if(await page.locator('.post-password-form').count()!==1)throw Error('Wrong password accepted');
+  await page.locator('[name=post_password]').fill('enter');
+  await page.locator('.post-password-form [type=submit]').click();
+  await page.waitForLoadState('load');
+  if(await page.locator('.post-password-form').count())throw Error('Correct password rejected');
+  result.passwordWrongRejected=true;result.passwordCorrectAccepted=true;
+  await page.context().clearCookies();await page.reload();
+  if(await page.locator('.post-password-form').count()!==1)throw Error('Content not protected in fresh session');
+  result.passwordFreshSessionProtected=true;
+  await page.goto('http://localhost:8090/?p=1148');
+  const reply=page.locator('.comment-reply-link').first();
+  await reply.click();
+  const parent=await page.locator('#comment_parent').inputValue();
+  if(parent==='0')throw Error('Reply parent not set');
+  await page.locator('#cancel-comment-reply-link').click();
+  if(await page.locator('#comment_parent').inputValue()!=='0')throw Error('Cancel reply failed');
+  await reply.click();
+  const marker='OC interaction audit '+Date.now();
+  await page.locator('#comment').fill(marker);
+  await page.locator('#author').fill('Theme test');
+  await page.locator('#email').fill('theme-test@example.invalid');
+  await page.locator('#submit').click();await page.waitForLoadState('load');
+  const redirect=new URL(page.url());redirect.searchParams.delete('moderation-hash');
+  result.comment={marker,parent,cancelReply:true,redirect:redirect.href,visible:(await page.locator('body').innerText()).includes(marker)};
+  if(!result.comment.visible)throw Error('Submitted comment not visible, check moderation/DB');
+ } finally {
+  fs.mkdirSync(process.env.OC_AUDIT_OUTPUT,{recursive:true});
+  fs.writeFileSync(path.join(process.env.OC_AUDIT_OUTPUT,'interactions.json'),JSON.stringify(result,null,2));
+  await browser.close();
+ }
+ console.log(JSON.stringify(result));
+})().catch(e=>{console.error(e);process.exitCode=1});
