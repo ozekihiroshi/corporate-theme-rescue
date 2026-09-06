@@ -14,6 +14,7 @@ services:
     volumes:
       - wordpress_html:/var/www/html
       - ../ozeki-corporate:/var/www/html/wp-content/themes/ozeki-corporate:ro
+      - ./scripts:/workspace/scripts:ro
       - ./wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
     depends_on:
       db:
@@ -47,6 +48,7 @@ services:
     volumes:
       - wordpress_html:/var/www/html
       - ../ozeki-corporate:/var/www/html/wp-content/themes/ozeki-corporate:ro
+      - ./scripts:/workspace/scripts:ro
     depends_on:
       db:
         condition: service_healthy

@@ -13,6 +13,7 @@ services:
       WORDPRESS_DEBUG: "1"
     volumes:
       - wordpress_html:/var/www/html
+      - ./scripts:/workspace/scripts:ro
       - ./wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
     depends_on:
       db:

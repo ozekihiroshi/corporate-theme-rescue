@@ -13,6 +13,12 @@ Start development WordPress:
 docker compose up -d
 ```
 
+Create or refresh the bilingual test content:
+
+```sh
+docker compose run --rm wp-cli wp eval-file /workspace/scripts/seed-content.php
+```
+
 Start the independent ZIP test environment:
 
 ```sh
