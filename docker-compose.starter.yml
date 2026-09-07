@@ -1,0 +1,41 @@
+name: oc-starter-review
+services:
+  wordpress:
+    image: wordpress:php8.3-apache
+    ports: ["127.0.0.1:8091:80"]
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: starter
+      WORDPRESS_DB_USER: starter
+      WORDPRESS_DB_PASSWORD: local-starter-only
+    volumes: ["html:/var/www/html"]
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: starter
+      MARIADB_USER: starter
+      MARIADB_PASSWORD: local-starter-only
+      MARIADB_RANDOM_ROOT_PASSWORD: "1"
+    volumes: ["db:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 20
+  cli:
+    image: wordpress:cli-php8.3
+    profiles: ["cli"]
+    user: "33:33"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: starter
+      WORDPRESS_DB_USER: starter
+      WORDPRESS_DB_PASSWORD: local-starter-only
+    volumes:
+      - html:/var/www/html
+      - ./.audit-tools/starter-release:/release:ro
+volumes:
+  html:
+  db:
