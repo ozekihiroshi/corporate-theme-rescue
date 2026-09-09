@@ -1,0 +1,1 @@
+694b832d8469057becb60ac835554f330456ff6ceca0d0b9049ad31727960c3f  ../ozeki-corporate/build/ozeki-corporate-0.2.0.zip

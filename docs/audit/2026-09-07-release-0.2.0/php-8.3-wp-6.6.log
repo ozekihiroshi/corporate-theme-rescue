@@ -1,0 +1,35 @@
+Unpacking the package...
+Installing the theme...
+Theme installed successfully.
+Activating 'ozeki-corporate'...
+Success: Switched to 'Ozeki Corporate' theme.
+Success: Installed 1 of 1 themes.
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/services.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/page-services.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/call-to-action.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/hero.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/page-about.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/strengths.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/introduction.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/company-information.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/latest-news.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/return-home.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/page-contact.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/patterns/page-company.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/functions.php
+No syntax errors detected in wp-content/themes/ozeki-corporate/inc/getting-started.php
+RUNTIME_OK PHP=8.3.33 WP=6.6 templates=7 patterns=12
+hero: parsed and serialized
+services: parsed and serialized
+introduction: parsed and serialized
+company-information: parsed and serialized
+call-to-action: parsed and serialized
+page-about: parsed and serialized
+page-services: parsed and serialized
+page-company: parsed and serialized
+page-contact: parsed and serialized
+Starter image present. No content was created or changed.
+Editor validation, visual inspection and fresh ZIP install remain separate checks.
+20260901
+[{"type":"INFO","value":"Only one text-domain is being used in this theme. Make sure it matches the theme's slug correctly so that the theme will be compatible with WordPress.org language packs. The domain found is ozeki-corporate."}]
+THEME_CHECK_OK: no non-INFO findings

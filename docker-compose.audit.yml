@@ -18,6 +18,7 @@ services:
     image: wordpress:cli-php${AUDIT_PHP:-8.3}
     environment:
       AUDIT_WP: ${AUDIT_WP:-6.6}
+      AUDIT_ZIP: ${AUDIT_ZIP:-ozeki-corporate-0.2.0.zip}
     volumes:
       - ./scripts:/audit:ro
       - ../ozeki-corporate/build:/release:ro

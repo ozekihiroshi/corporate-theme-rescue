@@ -72,11 +72,11 @@ From this repository:
 
 ```sh
 bash ../ozeki-corporate/build-release.sh
-docker compose -f docker-compose.ziptest.yml run --rm wp-cli wp theme install /release/ozeki-corporate-0.1.0.zip --activate
+docker compose -f docker-compose.ziptest.yml run --rm wp-cli wp theme install /release/ozeki-corporate-0.2.0.zip --activate
 ```
 
 Use the actual versioned filename emitted by the build. The example is the
-current development header version, not a claim that it equals GitHub v0.1.0.
+current 0.2.0 candidate, not the published GitHub v0.1.0.
 Record SHA-256 for every tested artifact; filenames/versions alone are insufficient.
 For an intentional update of an installed test theme, add `--force` only after
 preserving any theme-file modifications. Theme replacement is not a content reset.
@@ -88,7 +88,7 @@ mkdir -p .audit-tools/starter-release
 bash ../ozeki-corporate/build-release.sh "$PWD/.audit-tools/starter-release"
 docker compose -f docker-compose.starter.yml up -d
 # Complete setup at http://localhost:8091/ if this volume is new, then:
-docker compose -f docker-compose.starter.yml run --rm cli wp theme install /release/ozeki-corporate-0.1.0.zip --activate
+docker compose -f docker-compose.starter.yml run --rm cli wp theme install /release/ozeki-corporate-0.2.0.zip --activate
 ```
 
 On 8091 open Appearance > Ozeki Corporate Guide, then add a page and select a
@@ -98,6 +98,16 @@ form and requires real contact details or a separately configured form.
 
 ## Tests and evidence
 
+- [Current guide-update candidate](docs/candidate-2026-09-09.md): September 9
+  ZIP hash, eight-case matrix, Theme Check and installed-ZIP guide UI checks.
+- [Mac Safari user checks](docs/safari-user-check-2026-09-09.md): verified scope
+  and untested accessibility boundaries.
+
+- [AWS 0.2.0 deployment](docs/aws-release-0.2.0-2026-09-07.md): current installed
+  AWS version, rollback archive and unchanged-content checks.
+- [September 7 candidate validation](docs/release-0.2.0-validation.md): the older
+  ZIP deployed to AWS, its eight-case matrix, Theme Check and 8091 checks.
+  It does not contain the September 9 guide changes.
 - [Showcase](docs/showcase.md): fixture ownership and sample content. Seeding is
   optional and can replace fixture-owned text. Do not rerun it on edited samples
   unless that replacement is intended; never run it on a production site.
