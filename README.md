@@ -14,6 +14,13 @@ Do not upload this repository as a theme ZIP.
 | 8091 | First-user onboarding and editing tests | Installed development ZIP, independent database and files |
 | AWS demo | Existing Japanese showcase and starter preview | Explicit ZIP deployment to the existing site only |
 
+Keep only 8089 and 8090 running during ordinary development. Start 8091 only
+for a first-user or onboarding exercise, then stop it when that review ends.
+Matrix/audit Compose projects are transient, do not need published ports and
+must be stopped after their evidence is collected. Reuse these environments for
+new candidates instead of allocating a port per version; Git history, ZIP hashes
+and curated reports preserve the release history.
+
 Each local Compose project has separate named volumes. An English/Japanese
 editing test saved on 8091 is not the theme's shipped default content. Similarly,
 the Japanese AWS showcase uses stored pages, templates and global styles that
@@ -145,10 +152,12 @@ verify the uploaded ZIP hash and compare content/settings before and after.
 Keep backups private on the server; a theme archive is not a database backup.
 The user's SSH host/key configuration is external to this repository.
 
-The temporary screenshot fixture is only for localhost:8091, does not write to
-the database, and must be removed from the container after capture. Never deploy
-it to AWS. The English theme screenshot uses real bundled patterns and a sample
-site title; it does not promise an automatically imported demo site.
+The temporary screenshot fixture is restricted to localhost:8090 and :8091,
+does not write to the database, and must be removed from the container after
+capture. Never deploy it to AWS. The English theme screenshot uses real bundled
+patterns and a sample site title; it does not promise an automatically imported
+demo site. `capture-visual-review.cjs` records desktop/mobile views; its
+Japanese target is a typography regression fixture, not shipped demo content.
 
 ## Stop and resume safely
 

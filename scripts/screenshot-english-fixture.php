@@ -1,7 +1,7 @@
 <?php
-// Temporary local-only screenshot fixture. Copy into the disposable 8091 site,
+// Temporary local-only screenshot fixture. Copy into the disposable 8090 or 8091 site,
 // capture, then remove. No database changes or saved template modifications.
-if (!in_array($_SERVER['HTTP_HOST'] ?? '', ['localhost:8091', '127.0.0.1:8091'], true)) {
+if (!in_array($_SERVER['HTTP_HOST'] ?? '', ['localhost:8090', '127.0.0.1:8090', 'localhost:8091', '127.0.0.1:8091'], true)) {
     http_response_code(403);
     exit;
 }
