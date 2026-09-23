@@ -107,6 +107,8 @@ form and requires real contact details or a separately configured form.
 
 - [Current guide-update candidate](docs/candidate-2026-09-09.md): September 9
   ZIP hash, eight-case matrix, Theme Check and installed-ZIP guide UI checks.
+- [Public v0.2.0 release and final AWS update](docs/release-and-aws-2026-09-10.md):
+  published tag/asset identity, downloaded ZIP hash and unchanged-content checks.
 - [Mac Safari user checks](docs/safari-user-check-2026-09-09.md): verified scope
   and untested accessibility boundaries.
 
