@@ -21,6 +21,59 @@ $assert_same = static function ($expected, $actual, string $label): void {
 $base = $read_json($theme_dir . '/theme.json');
 $japanese = $read_json($theme_dir . '/styles/japanese-refined.json');
 
+$expected_palette = [
+	'base'        => '#ffffff',
+	'contrast'    => '#17212b',
+	'navy'        => '#183b56',
+	'muted'       => '#5b6670',
+	'surface'     => '#f3f5f6',
+	'border'      => '#d6dde2',
+	'accent'      => '#087f73',
+	'accent-dark' => '#075e56',
+];
+$expected_palette_names = [
+	'base'        => 'White',
+	'contrast'    => 'Ink',
+	'navy'        => 'Navy',
+	'muted'       => 'Slate',
+	'surface'     => 'Mist',
+	'border'      => 'Line',
+	'accent'      => 'Deep Teal',
+	'accent-dark' => 'Deep Teal Dark',
+];
+$actual_palette = [];
+$actual_palette_names = [];
+foreach ($base['settings']['color']['palette'] ?? [] as $preset) {
+	$actual_palette[(string) $preset['slug']] = strtolower((string) $preset['color']);
+	$actual_palette_names[(string) $preset['slug']] = (string) $preset['name'];
+}
+$assert_same($expected_palette, $actual_palette, 'Color palette');
+$assert_same($expected_palette_names, $actual_palette_names, 'Color palette names');
+$assert_same(
+	'var(--wp--preset--color--navy)',
+	$base['styles']['elements']['button']['color']['background'] ?? null,
+	'Button background'
+);
+
+$luminance = static function (string $hex): float {
+	$channels = str_split(ltrim($hex, '#'), 2);
+	$linear = array_map(static function (string $channel): float {
+		$value = hexdec($channel) / 255;
+		return $value <= 0.04045 ? $value / 12.92 : (($value + 0.055) / 1.055) ** 2.4;
+	}, $channels);
+	return (0.2126 * $linear[0]) + (0.7152 * $linear[1]) + (0.0722 * $linear[2]);
+};
+$contrast_ratio = static function (string $first, string $second) use ($luminance): float {
+	$light = max($luminance($first), $luminance($second));
+	$dark = min($luminance($first), $luminance($second));
+	return ($light + 0.05) / ($dark + 0.05);
+};
+foreach (['contrast', 'navy', 'muted', 'accent', 'accent-dark'] as $foreground) {
+	if ($contrast_ratio($expected_palette[$foreground], $expected_palette['base']) < 4.5) {
+		throw new RuntimeException('Insufficient contrast for ' . $foreground . ' on base.');
+	}
+}
+
 $expected_spacing = [
 	'10' => '0.25rem',
 	'20' => '0.5rem',
@@ -87,4 +140,21 @@ foreach ($spacing_declarations[1] as $value) {
 	}
 }
 
-echo 'DESIGN_SYSTEM_OK spacing=4,8,16,24,40,64,96 body=1.75 japanese=1.9' . PHP_EOL;
+foreach (['.wp-block-image.is-style-soft-shadow img', '.wp-block-group.is-style-key-point'] as $selector) {
+	if (! str_contains($css, $selector)) {
+		throw new RuntimeException('Missing block-style CSS: ' . $selector);
+	}
+}
+if (! str_contains($css, 'border-inline-start:')) {
+	throw new RuntimeException('Key Point must use a direction-aware border.');
+}
+
+$styles = WP_Block_Styles_Registry::get_instance();
+if (! $styles->is_registered('core/image', 'soft-shadow')) {
+	throw new RuntimeException('Soft Shadow is not registered for core/image.');
+}
+if (! $styles->is_registered('core/group', 'key-point')) {
+	throw new RuntimeException('Key Point is not registered for core/group.');
+}
+
+echo 'DESIGN_SYSTEM_OK palette=8 contrast>=4.5 spacing=4,8,16,24,40,64,96 body=1.75 japanese=1.9 styles=soft-shadow,key-point' . PHP_EOL;

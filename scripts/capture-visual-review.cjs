@@ -16,6 +16,10 @@ const targets = [
     name: 'japanese-refined',
     url: process.env.OC_JAPANESE_URL || 'http://localhost:8090/?page_id=5&oc_japanese_refined=1',
   },
+  {
+    name: 'color-block-styles',
+    url: process.env.OC_BLOCK_STYLES_URL || 'http://localhost:8090/screenshot-block-styles-fixture.php',
+  },
 ];
 const viewports = [
   { name: 'desktop', width: 1440, height: 1000 },
