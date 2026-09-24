@@ -105,6 +105,10 @@ form and requires real contact details or a separately configured form.
 
 ## Tests and evidence
 
+- [0.2.3 review corrections](docs/review-fixes-0.2.3-2026-09-25.md): fixed page
+  comments, native hierarchical navigation, translation catalog and runtime
+  translation tests, eight-case compatibility matrix and six browser scenarios.
+
 - [Current 0.2.2 color/block-style candidate](docs/color-block-styles-0.2.2-2026-09-24.md):
   final ZIP hash, palette/contrast contract, eight-case matrix, Theme Check,
   narrow-width measurements and visual-review boundaries.

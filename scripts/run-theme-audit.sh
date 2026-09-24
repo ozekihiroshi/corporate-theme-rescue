@@ -13,6 +13,7 @@ wp eval-file /audit/check-theme-runtime.php
 wp eval-file /audit/check-design-system.php
 wp eval-file /audit/check-starter-patterns.php
 wp eval-file /audit/check-guide-runtime.php
+wp eval-file /audit/check-review-runtime.php
 wp plugin install theme-check --activate --quiet
 wp plugin get theme-check --field=version
 wp theme-check run ozeki-corporate --format=json > theme-check.json

@@ -12,7 +12,7 @@ failed=0
 for php in 8.1 8.2 8.3 8.4; do
   for wp in 6.6 7.1; do
     echo "=== PHP $php / WordPress $wp ==="
-    if AUDIT_PHP="$php" AUDIT_WP="$wp" timeout 600 docker compose -f docker-compose.audit.yml run --rm --no-deps -T runner >"$results/php-$php-wp-$wp.log" 2>&1; then
+    if AUDIT_PHP="$php" AUDIT_WP="$wp" timeout --foreground 600 docker compose -f docker-compose.audit.yml run --rm --no-deps -T runner </dev/null >"$results/php-$php-wp-$wp.log" 2>&1; then
       echo "PASS PHP=$php WP=$wp"
       printf 'PASS PHP=%s WP=%s\n' "$php" "$wp" >> "$results/summary.txt"
     else
