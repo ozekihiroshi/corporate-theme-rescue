@@ -9,8 +9,8 @@ hierarchy and two opt-in block styles. It is not an update to the submitted
 
 ## Candidate artifact
 
-- File: `build/color-block-styles-2026-09-24/ozeki-corporate-0.2.2.zip`
-- SHA-256: `ee86b1eba0b9eddd3086145dd8f098611a069cd6ce6a13a8ddd027e8a25665c9`
+- File: `build/pre-publication-0.2.2-2026-09-24/ozeki-corporate-0.2.2.zip`
+- SHA-256: `c9229dc4e70cbaa6675b114ae607557c644b829161f5ca6093e70df39108c2ef`
 - Theme branch: `codex/color-block-styles-0.2.2`
 - Environment branch: `codex/color-block-styles-0.2.2`
 
@@ -74,12 +74,15 @@ The exact candidate ZIP passed all eight PHP/WordPress combinations:
 Every combination included PHP lint, pattern/template parsing and serialization,
 the design-system contract, guide checks and Theme Check. Theme Check reported
 no non-INFO findings; its one INFO confirmed the `ozeki-corporate` text domain.
-Raw logs remain in `/tmp/oc-matrix-results.ZHHH95pg` for this local run. The
-transient audit database was stopped after testing.
+Raw logs remain in `/tmp/oc-matrix-results.sgliwjWr` for this local run. Two
+WordPress 7.1 downloads ended early during that run before theme installation;
+PHP 8.2 / WordPress 7.1 and PHP 8.3 / WordPress 7.1 were rerun individually and
+both completed all checks successfully. The transient audit database was stopped
+after testing.
 
 ## Visual evidence and boundaries
 
-Final-ZIP desktop/mobile captures are stored in the ignored local directory
+Desktop/mobile captures from the runtime-identical candidate are stored in the ignored local directory
 `.audit-tools/color-block-styles-0.2.2-2026-09-24/`. The structured pass found:
 
 - the full-width Navy call to action provides the main color anchor;
@@ -89,7 +92,10 @@ Final-ZIP desktop/mobile captures are stored in the ignored local directory
 - the existing English starter and Japanese Refined typography retain their
   established spacing and hierarchy.
 
-The screenshot and measurement fixtures were localhost-only, made no database
-changes and were removed from 8090 after use. The next gate is the maintainer's
-human visual review on 8090; no commit, push, release or AWS update is implied by
-this report.
+The final ZIP differs from the captured runtime only in README/readme text; it
+was installed on 8090 and passed the same design-system contract. The screenshot
+and measurement fixtures were localhost-only, made no database changes and were
+removed from 8090 after use. The maintainer completed the human visual review on
+8090 and accepted the color and block-style presentation. This report closes the
+pre-publication validation checkpoint; tagging, GitHub Release creation, AWS
+deployment and WordPress.org submission remain separate publication actions.

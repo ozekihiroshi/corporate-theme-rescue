@@ -79,11 +79,11 @@ From this repository:
 
 ```sh
 bash ../ozeki-corporate/build-release.sh
-docker compose -f docker-compose.ziptest.yml run --rm wp-cli wp theme install /release/ozeki-corporate-0.2.0.zip --activate
+docker compose -f docker-compose.ziptest.yml run --rm wp-cli wp theme install /release/ozeki-corporate-0.2.2.zip --activate
 ```
 
 Use the actual versioned filename emitted by the build. The example is the
-current 0.2.0 candidate, not the published GitHub v0.1.0.
+current 0.2.2 candidate; the latest published GitHub release is v0.2.0.
 Record SHA-256 for every tested artifact; filenames/versions alone are insufficient.
 For an intentional update of an installed test theme, add `--force` only after
 preserving any theme-file modifications. Theme replacement is not a content reset.
@@ -95,7 +95,7 @@ mkdir -p .audit-tools/starter-release
 bash ../ozeki-corporate/build-release.sh "$PWD/.audit-tools/starter-release"
 docker compose -f docker-compose.starter.yml up -d
 # Complete setup at http://localhost:8091/ if this volume is new, then:
-docker compose -f docker-compose.starter.yml run --rm cli wp theme install /release/ozeki-corporate-0.2.0.zip --activate
+docker compose -f docker-compose.starter.yml run --rm cli wp theme install /release/ozeki-corporate-0.2.2.zip --activate
 ```
 
 On 8091 open Appearance > Ozeki Corporate Guide, then add a page and select a
@@ -105,6 +105,11 @@ form and requires real contact details or a separately configured form.
 
 ## Tests and evidence
 
+- [Current 0.2.2 color/block-style candidate](docs/color-block-styles-0.2.2-2026-09-24.md):
+  final ZIP hash, palette/contrast contract, eight-case matrix, Theme Check,
+  narrow-width measurements and visual-review boundaries.
+- [0.2.1 typography/spacing checkpoint](docs/typography-spacing-0.2.1-2026-09-24.md):
+  spacing scale, English/Japanese line heights and computed browser metrics.
 - [Current guide-update candidate](docs/candidate-2026-09-09.md): September 9
   ZIP hash, eight-case matrix, Theme Check and installed-ZIP guide UI checks.
 - [Public v0.2.0 release and final AWS update](docs/release-and-aws-2026-09-10.md):
