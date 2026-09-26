@@ -1,7 +1,7 @@
 <?php
 /** Read-only structure checks: run with WordPress loaded, never seed content. */
 if (!defined('ABSPATH')) { throw new RuntimeException('WordPress must be loaded.'); }
-$names = ['hero', 'services', 'introduction', 'company-information', 'call-to-action', 'page-about', 'page-services', 'page-company', 'page-contact'];
+$names = ['hero', 'services', 'process', 'representative-message', 'case-study', 'introduction', 'company-information', 'call-to-action', 'page-about', 'page-services', 'page-company', 'page-contact'];
 foreach ($names as $name) {
     ob_start();
     include get_theme_file_path('patterns/' . $name . '.php');
