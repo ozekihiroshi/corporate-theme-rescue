@@ -30,10 +30,33 @@
 - GitHub Release published: https://github.com/ozekihiroshi/ozeki-corporate/releases/tag/v0.3.0
   Source commit `4f9ce96`, annotated tag `v0.3.0`, main and tag pushed.
   Re-downloaded release asset matches the tested ZIP byte-for-byte and by SHA-256.
-- AWS `https://wp.ceri.link` unchanged: SSH port 22 timed out from WSL and
-  Windows. No firewall, SSH, server configuration or content changes attempted.
-- WordPress.org update pending. User is logged in through Chrome; the available
-  automated browser has a separate unauthenticated session.
+- AWS updated from 0.2.0 to 0.3.0 through the existing `ssh community` alias.
+  Direct SSH to the public website hostname timed out; that did not establish
+  a server outage. No firewall, WireGuard or container startup settings changed.
+- WordPress.org upload accepted on ticket 292865; user screenshots confirm
+  acceptance and the 0.3.0 explanatory comment #3. Approval is still pending.
+
+## AWS deployment verification
+
+- Private checkpoint: `/home/ubuntu/oc-release-030.OBN6ZVnv/` on `community`.
+- Full WordPress database dump: `database-before.sql.gz` (about 43 KiB).
+  Dump completed marker and gzip integrity passed. No restore test performed.
+- Prior theme and wp-config: `theme-config-before.tar.gz` (about 848 KiB).
+  Gzip integrity passed; backup hashes retained privately in the checkpoint.
+  This is a database/config/theme checkpoint, not a full uploads/server backup.
+- Checkpoint permissions are private; no credentials or database contents copied
+  into this repository. The database container's application credentials were
+  used internally without printing them.
+- Transferred ZIP hash matched the artifact above. WP-CLI installed with --force,
+  without activation, theme switching, imports or content seeding.
+- Exact before/after snapshot match: 42 posts (including saved templates/styles),
+  45 postmeta rows, 22 term relationships, and selected home/reading/theme/plugin
+  options. Active theme version is 0.3.0.
+- HTTP 200: /, /about/, /services/, /news/, /company/, /english/, /contact/,
+  /theme-starter-preview/ and the theme style.css.
+- Browser screenshot inspection: homepage and company table render correctly.
+  Not a new Safari, responsive or comprehensive accessibility pass.
+- Recurring hangs and Docker/Traefik startup behavior are deferred by the user.
 
 The five temporary review pages/comments and the localhost review endpoint
 created for this run were removed afterward; existing editing drafts remain.
