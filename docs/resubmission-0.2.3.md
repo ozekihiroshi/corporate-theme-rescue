@@ -5,7 +5,9 @@
 - ZIP: `../ozeki-corporate/build/review-0.2.3/ozeki-corporate-0.2.3.zip`
 - SHA-256: `38d338bd4b0b29302790f6cda4289732f16ae46526dc1b89e5189d264b4e6b47`
 - Previous review: https://themes.trac.wordpress.org/ticket/290666
-- Status: prepared; upload acceptance and new ticket are not yet confirmed.
+- Accepted as ticket https://themes.trac.wordpress.org/ticket/292865;
+  the author posted the correction summary in comment 1.
+  Verified on 2026-09-30: status new, no reviewer assigned or further feedback.
 
 ## Reviewer message
 
